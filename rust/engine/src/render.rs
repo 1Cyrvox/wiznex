@@ -1010,6 +1010,7 @@ pub(crate) struct Gpu {
     bloom: Option<bloom::Bloom>,             // a 3D view's bloom's passes, made when a view first has it
     blend: [Option<wgpu::ShaderModule>; 2], // single/multisample texture forms (the shadow passes share either)
     shadow_passes: HashMap<usize, wgpu::RenderPipeline>, // by the light's slot in its view, made when first cast
+    no_lists: bool, // Intel UHD/Iris Xe mishandle the see-through lists' atomics: skip them (Fix #004)
 }
 
 #[cfg(not(target_arch = "wasm32"))]
@@ -1118,6 +1119,12 @@ impl Gpu {
         // kept where surfaces are made (a canvas's, a window's): from the instance of the adapter
         #[cfg(not(feature = "player"))]
         drop(instance);
+        // Intel UHD/Iris Xe mishandle the see-through lists' storage-buffer atomics (fragments
+        // append, but the composite reads back a stale colour): skip the lists on them (Fix #004).
+        let no_lists = {
+            let name = adapter.get_info().name;
+            name.contains("UHD") || name.contains("Iris(R) Xe")
+        };
         let specific = wgpu::Features::TEXTURE_ADAPTER_SPECIFIC_FORMAT_FEATURES;
         let required_features = (adapter.features() & (specific | wgpu::Features::FLOAT32_BLENDABLE)) | wgpu::Features::DEPTH32FLOAT_STENCIL8;
         let (device, queue) = adapter
@@ -1199,7 +1206,7 @@ impl Gpu {
             instance,
             #[cfg(feature = "player")]
             adapter,
-            device, queue, raster, image_layout, sampler, pipelines: HashMap::new(), max_samples, vector, shadow_compare, dfg, linear, no_environment, prefilter: None, occlusion: None, no_occlusion, bloom: None, blend: [None, None], shadow_passes: HashMap::new() })
+            device, queue, raster, image_layout, sampler, pipelines: HashMap::new(), max_samples, vector, shadow_compare, dfg, linear, no_environment, prefilter: None, occlusion: None, no_occlusion, bloom: None, blend: [None, None], shadow_passes: HashMap::new(), no_lists })
     }
 
     /// The raster pipeline's passes at `samples`, made when a view first draws rasters with them.
@@ -2139,7 +2146,7 @@ impl Player {
                 // Transparency has the same depth ordering at every sample count. Point sprites
                 // blend between the other layers through slabs; mesh fragments use lists.
                 let sprites_here = self.sprites(&instances[offset as usize..], &draws, offset, &mut sprites);
-                let lists = draws.iter().any(Draw::listed);
+                let lists = !gpu.no_lists && draws.iter().any(Draw::listed);
                 let slabs = !sprites_here.is_empty() && (lists || !casting.is_empty());
                 // its lit meshes' light, kept apart from its paint in its base and shown once by its composite (a
                 // camera's integration of what is lit)
