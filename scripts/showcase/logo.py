@@ -42,8 +42,9 @@ PLAYWRITE_URL = (
 )
 PLAYWRITE_SHA256 = "f4c860ca1f83d5d86db52eda1d01e81e2b41f119123189247f7d3071dd60bced"
 
-INK = {"dark": "#ece6e2", "light": "#343434"}  # Manim's banner's, on each ground
-GREEN, BLUE, RED = "#81b29a", "#454866", "#e07a5f"  # its circle, square and triangle
+INK = {"dark": "#ffffff", "light": "#070910"}  # Wiznex 文字色，on each ground
+GREEN, BLUE, RED = "#8b5cf6", "#c084fc", "#7c3aed"  # 建站紫色系：球体、立方体、四面体
+BRAND = "#8b5cf6"  # W 的品牌色（建站主色紫）
 LIGHT = np.array([-0.5, 0.78, 0.42]) / np.linalg.norm([-0.5, 0.78, 0.42])  # upper left
 SOLIDS = 1.272  # the solids' height beside "GX", over the 𝕄's, about the type's middle
 SECONDS = 5.2  # the opening, which then holds
@@ -110,12 +111,12 @@ def word() -> tuple[list[Outline], float, float]:
     """𝕄, "anim" and "GX", placed; the 𝕄's height; and the word's em, "anim"'s. "anim" is
     0.757 of the 𝕄, as in Manim's banner, and "GX" 0.9; each follows the last's ink by a
     sliver of the 𝕄."""
-    big_m = set_type("$x quad bb(M)$")
+    big_m = set_type('#text(font: "New Computer Modern", weight: 700)[x#h(1em)W]')
     h = extent(big_m)[3]
     parts, ems = [big_m], []
     for code, size, gap in (
-        ('#text(font: "New Computer Modern", weight: 700)[x#h(1em)anim]', 0.757, 0.03),
-        ('#text(font: "Playwrite NO")[x#h(1em)GX]', 0.9, 0.05),
+        ('#text(font: "New Computer Modern", weight: 700)[x#h(1em)iz]', 0.757, 0.03),
+        ('#text(font: "Playwrite NO")[x#h(1em)nex]', 0.9, 0.05),
     ):
         run = set_type(code)
         k = size * h / extent(run)[3]
@@ -547,14 +548,15 @@ def logo_body(
     body = []
     # the word, written: each part's outline drawn, then filled, one part after the next
     for i, part in enumerate(parts):
+        color = BRAND if i == 0 else ink  # W 用品牌色
         paths = [canvas.curve(c) for c in part]
         if not opening:
-            body.append(f'<path fill="{ink}" d="{"".join(paths)}"/>')
+            body.append(f'<path fill="{color}" d="{"".join(paths)}"/>')
             continue
         t0 = 0.1 + 0.5 * i
-        strokes = drawn(paths, ink, stroke, t0, 1.05)
+        strokes = drawn(paths, color, stroke, t0, 1.05)
         fill = animate("fill-opacity", [(t0 + 0.8, "0"), (t0 + 1.35, "1")])
-        body.append(f'{strokes}<path fill="{ink}" d="{"".join(paths)}">{fill}</path>')
+        body.append(f'{strokes}<path fill="{color}" d="{"".join(paths)}">{fill}</path>')
     # the cube (the farthest), the tetrahedron, then the sphere in front
     for solid, created, turning in (
         (sc.cube, 2.05, 2.95),

@@ -50,6 +50,12 @@ tests/**/_diffs/
 .vscode/
 .idea/
 
+# 本地调试/诊断产物（不提交）
+*.pdb
+diag_render.py
+build_log_picked_films.txt
+manimgx_lib/_engine.pyi
+
 # the npm package's copy of manimgx's license (just build-npm)
 browser/LICENSE
 

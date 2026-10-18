@@ -14,6 +14,9 @@
   {% set card = config.extra.social_image %}
   {% set image = (config.site_url | trim("/")) ~ "/" ~ card.path %}
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta property="og:site_name" content="{{ config.site_name | e }}">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="{{ title | e }}">
@@ -38,9 +41,9 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "数境 ShuJing",
-    "alternateName": "ShuJing",
-    "description": "数学动画引擎，让数学可视化触手可及。基于 ManimGX，支持 Python 编程式数学动画创作。",
+    "name": "Wiznex",
+    "alternateName": "Wiznex",
+    "description": "ManimGX 中文本土化发行版 · 全套中文文档 · 可视化编排IDE · 在线沙盒",
     "url": "https://www.wlazn.cn/",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Windows 10/11, macOS, Linux",
@@ -56,9 +59,9 @@
       "name": "爱派未来科技",
       "url": "https://www.wlazn.cn/"
     },
-    "license": "https://github.com/1Cyrvox/ShuJing/blob/main/LICENSE",
-    "codeRepository": "https://github.com/1Cyrvox/ShuJing",
-    "downloadUrl": "https://github.com/1Cyrvox/ShuJing/releases",
+    "license": "https://github.com/1Cyrvox/Wiznex/blob/main/LICENSE",
+    "codeRepository": "https://github.com/1Cyrvox/Wiznex",
+    "downloadUrl": "https://github.com/1Cyrvox/Wiznex/releases",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -83,7 +86,7 @@
     "inLanguage": "zh-CN",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "数境 ShuJing",
+      "name": "Wiznex",
       "url": "https://www.wlazn.cn/"
     },
     "publisher": {

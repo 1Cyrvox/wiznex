@@ -1,6 +1,6 @@
 /* manimgx's look on Zensical's modern theme */
 
-/* Colors: 数境's purple — unified violet, modern anime style */
+/* Colors: Wiznex's purple — unified violet, modern anime style */
 :root > * {
   --md-primary-fg-color: #8b5cf6;
   --md-primary-fg-color--light: #a78bfa;
@@ -11,20 +11,23 @@
   --md-accent-fg-color--transparent: #c084fc1a;
   --md-accent-bg-color: #fff;
   --md-accent-bg-color--light: #ffffffb3;
+  --md-text-font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont,
+                         'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif;
+  --md-code-font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-hue: 232;
-  --md-default-bg-color: #1a1b26;
-  --md-default-fg-color: #cdd6f4;
-  --md-default-fg-color--light: #a9adc6;
-  --md-default-fg-color--lighter: #7f849c;
-  --md-default-fg-color--lightest: #45475a;
-  --md-code-bg-color: #11111b;
-  --md-code-fg-color: #cdd6f4;
-  --md-primary-fg-color: #a78bfa;
-  --md-primary-fg-color--light: #c4b5fd;
-  --md-primary-fg-color--dark: #8b5cf6;
+  --md-hue: 265;
+  --md-default-bg-color: #070910;
+  --md-default-fg-color: #d6dde6;
+  --md-default-fg-color--light: #9BA3AF;
+  --md-default-fg-color--lighter: #747b86;
+  --md-default-fg-color--lightest: #4a5160;
+  --md-code-bg-color: #0d1018;
+  --md-code-fg-color: #d6dde6;
+  --md-primary-fg-color: #8b5cf6;
+  --md-primary-fg-color--light: #c084fc;
+  --md-primary-fg-color--dark: #7c3aed;
   --md-accent-fg-color: #c084fc;
   --md-accent-fg-color--transparent: #c084fc1a;
 }
@@ -108,7 +111,7 @@ html {
   padding-block: 0.4rem;
 }
 
-/* The footer's band (partials/academa.html): 数境's footer — unified violet */
+/* The footer's band (partials/academa.html): Wiznex's footer — unified violet */
 .mx-footer {
   --mx-ground: oklch(0.99 0.004 300);
   --mx-border: oklch(0.92 0.008 300);
@@ -121,10 +124,10 @@ html {
 }
 
 [data-md-color-scheme="slate"] .mx-footer {
-  --mx-ground: #11111b;
-  --mx-border: #2a2a3c;
+  --mx-ground: #0d1018;
+  --mx-border: #1c222d;
   --mx-accent: var(--md-primary-fg-color);
-  --mx-accent-soft: #313244;
+  --mx-accent-soft: #1c222d;
 }
 
 .mx-footer a:not(.mx-footer__button) {
@@ -967,7 +970,7 @@ html {
   margin: 0;
 }
 /* ============================================================
-   数境 美化增强 — 现代二次元风格 · 统一紫色系
+   Wiznex 美化增强 — 现代二次元风格 · 统一紫色系
    ============================================================ */
 
 /* 卡片 hover：上浮 + 紫色光晕 */
@@ -1051,12 +1054,43 @@ html {
 }
 
 [data-md-color-scheme="slate"] .md-header {
+  background-color: rgba(7, 9, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 rgba(192, 132, 252, 0.08);
 }
 
-/* tabs 底边 */
+/* header 标题字体优化 */
+.md-header__title .md-header__topic {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* tabs 栏：精致紫色系 */
 .md-tabs {
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  background: transparent;
+}
+[data-md-color-scheme="slate"] .md-tabs {
+  border-bottom: 1px solid rgba(192, 132, 252, 0.08);
+}
+
+/* tabs 链接：柔和颜色 + hover 紫色 */
+.md-tabs__link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--md-default-fg-color--light);
+  transition: color 0.25s ease, border-color 0.25s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.md-tabs__link:hover {
+  color: var(--md-primary-fg-color);
+}
+.md-tabs__link--active {
+  color: var(--md-primary-fg-color);
+  border-bottom-color: var(--md-primary-fg-color);
 }
 
 /* 内联代码：紫色微调 */
@@ -1068,7 +1102,7 @@ html {
 }
 
 [data-md-color-scheme="slate"] .md-typeset code:not(.highlight *) {
-  background-color: #313244;
+  background-color: rgba(139, 92, 246, 0.12);
   color: #cdd6f4;
 }
 
@@ -1164,7 +1198,7 @@ html {
   color: var(--md-primary-fg-color);
 }
 /* ============================================================
-   数境 额外美化 — 细节打磨
+   Wiznex 额外美化 — 细节打磨
    ============================================================ */
 
 /* 回到顶部按钮：紫色 + 上浮 */
@@ -1263,9 +1297,30 @@ html {
   color: white;
 }
 
-/* 内容区域最大宽度优化 */
+/* 隐藏滚动条（保留滚动功能） */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 全站全宽布局（突破 mkdocs-material 的 61rem 限制，统一 6vw 边距） */
+.md-grid {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+.md-content {
+  max-width: none;
+}
 .md-content__inner {
-  max-width: 48rem;
+  max-width: none;
 }
 
 .md-content__inner > .mx-cards + .mx-cards,
@@ -1273,7 +1328,7 @@ html {
   max-width: none;
 }
 /* ============================================================
-   数境 毛玻璃 + 现代 HTML 特效
+   Wiznex 毛玻璃 + 现代 HTML 特效
    ============================================================ */
 
 /* 毛玻璃导航栏 */

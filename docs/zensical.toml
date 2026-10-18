@@ -4,13 +4,13 @@
 # its folders': the `.nav.yml` files (awesome-nav).
 
 [project]
-site_name = "数境 ShuJing"
+site_name = "Wiznex"
 site_url = "https://www.wlazn.cn/"
-site_description = "中文数学动画引擎 · 基于 ManimGX · 极速 3D 数学动画"
+site_description = "ManimGX 中文本土化发行版 · 全套中文文档 · 可视化编排IDE · 在线沙盒"
 site_author = "爱派未来科技"
-copyright = "&copy; 2026 爱派未来科技 · 基于 <a href=\"https://github.com/1Cyrvox/ShuJing\">ManimGX</a>（<a href=\"https://github.com/1Cyrvox/ShuJing/blob/main/LICENSE\">MIT 许可证</a>）"
-repo_url = "https://github.com/1Cyrvox/ShuJing"
-repo_name = "1Cyrvox/ShuJing"
+copyright = "&copy; 2026 爱派未来科技 · 基于 <a href=\"https://github.com/1Cyrvox/Wiznex\">ManimGX</a>（<a href=\"https://github.com/1Cyrvox/Wiznex/blob/main/LICENSE\">MIT 许可证</a>）"
+repo_url = "https://github.com/1Cyrvox/Wiznex"
+repo_name = "1Cyrvox/Wiznex"
 docs_dir = "content"
 site_dir = "site"
 watch = ["templates"]
@@ -31,9 +31,7 @@ features = [
   "content.tabs.link",
   "content.tooltips",
   "navigation.footer",
-  "navigation.instant",
-  "navigation.instant.prefetch",
-  "navigation.instant.progress",
+
   "navigation.path",
   # a page carries only the navigation it shows: half the site's HTML
   "navigation.prune",
@@ -65,11 +63,11 @@ accent = "custom"
 toggle.icon = "lucide/moon"
 toggle.name = "切换到浅色模式"
 
-# 数境页脚配置（overrides/partials/academa.html）
+# Wiznex 页脚配置（overrides/partials/academa.html）
 [project.extra]
-social_description = "数境 — 中文数学动画引擎，基于 ManimGX 中文适配衍生发行版。极速 3D 数学动画，兼容 Manim CE API。"
+social_description = "Wiznex — ManimGX 中文本土化发行版。全套中文文档 · 可视化编排IDE · 在线沙盒。"
 social = [
-  { icon = "fontawesome/brands/github", name = "GitHub", link = "https://github.com/1Cyrvox/ShuJing" },
+  { icon = "fontawesome/brands/github", name = "GitHub", link = "https://github.com/1Cyrvox/Wiznex" },
 ]
 
 # A static sharing card: crawlers receive its absolute URL in the rendered head.
@@ -78,7 +76,7 @@ social = [
 path = "images/social-preview.png"
 width = 1200
 height = 630
-alt = "数境 ShuJing — 中文数学动画引擎，基于 ManimGX 中文适配衍生发行版"
+alt = "Wiznex — 中文数学动画引擎，基于 ManimGX 中文适配衍生发行版"
 
 # Setting any extension replaces Zensical's defaults, so every extension is listed.
 [project.markdown_extensions]
@@ -100,7 +98,7 @@ pymdownx.highlight.line_spans = "__span"
 pymdownx.highlight.pygments_lang_class = true
 pymdownx.inlinehilite = {}
 pymdownx.keys = {}
-pymdownx.magiclink = { repo_url_shorthand = true, user = "1Cyrvox", repo = "ShuJing" }
+pymdownx.magiclink = { repo_url_shorthand = true, user = "1Cyrvox", repo = "Wiznex" }
 pymdownx.mark = {}
 pymdownx.smartsymbols = {}
 # the Welcome page is the README, included (its paths are the repository's)

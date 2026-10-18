@@ -5,7 +5,7 @@
 # scripts/docs/gallery.py 生成）。
 nav:
   - 用户指南:
-      - 欢迎: index.md
+
       - user-guide/quickstart.md
       - 学习:
           - user-guide/the-basics.md
