@@ -103,7 +103,7 @@ ManimGX 的理由。这些调用做什么的是 ManimGX 自身的设计，下文
 矩形、3D 轨道的值跟踪器），因此动画和更新器移动它如同
 移动其他任何东西。
 
-参见 [`scene.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/scene.py)，
+参见 [`scene.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/scene.py)，
 它拥有相机和场景变体以及它们的共享执行模型。
 
 ## 第 2 步：Mobject
@@ -123,7 +123,7 @@ points = Σₖ Mₖ·Sₖ。一个形状 Sₖ 是一个永不变更的控制点�
 mobject 赋予它已有的点不会改变任何东西（将一个网格赋予其三角形，或将一个
 绘制属性赋予其颜色也是如此）：它保留它持有的内容，以及从中导出的一切。
 
-参见 [`drawing/geometry.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/drawing/geometry.py)。
+参见 [`drawing/geometry.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/drawing/geometry.py)。
 它还拥有数值采样和三次轮廓转换。文本裁剪和布尔
 形状使用相同的平面路径；`VMobject` 拥有从结果构建可变曲线。
 
@@ -135,7 +135,7 @@ mobject 赋予它已有的点不会改变任何东西（将一个网格赋予其
 决定多个颜色意味着什么：路径上的渐变停止点、点或顶点颜色，
 或每个格单元的填充颜色。
 
-参见 [`drawing/paint.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/drawing/paint.py)。
+参见 [`drawing/paint.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/drawing/paint.py)。
 
 ### 三种类型
 
@@ -154,11 +154,11 @@ mobject 赋予它已有的点不会改变任何东西（将一个网格赋予其
   相等的格直接变形；不同的拓扑作为独立的三角形对齐。
 
 这三种类型都位于
-[`mobject.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobject.py)。
+[`mobject.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobject.py)。
 它们共享对象同一性、复制、族操作和生命周期；它们的类
 将路径曲线、点颜色和网格拓扑的不同规则保持为显式的。
 
-[`mobjects/`](https://github.com/1Cyrvox/ShuJing/tree/main/src/manimgx/mobjects)
+[`mobjects/`](https://github.com/1Cyrvox/Wiznex/tree/main/src/manimgx/mobjects)
 目录在这些规则上构建具体绘图。`shapes.py` 构造图形、
 曲线分解、虚线路径和布尔区域；`annotations.py` 在对象周围放置标签、
 框架和花括号；
@@ -173,13 +173,13 @@ mobject 赋予它已有的点不会改变任何东西（将一个网格赋予其
 进程中，无需 TeX 安装。排版构造普通的路径 mobject；其
 几何、绘制属性、动画和渲染随后如同方形的那样工作。
 
-1. **源。** [`mobjects/text.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobjects/text.py)
+1. **源。** [`mobjects/text.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobjects/text.py)
    持有源前端及其公共构建器。[`Typst`][manimgx.Typst] 接受
    Typst 标记；[`MathTypst`][manimgx.MathTypst] 添加数学分组；
    [`Text`][manimgx.Text] 写入字面字符串和排版运行；
    [`MathTex`][manimgx.MathTex] 和 [`Tex`][manimgx.Tex] 通过引擎的
    [mitex](https://github.com/mitex-rs/mitex) 转换器转换 LaTeX。每一个都到达同一个排版器。
-2. **布局。** [`drawing/typesetting.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/drawing/typesetting.py)
+2. **布局。** [`drawing/typesetting.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/drawing/typesetting.py)
    将源与其导言、字体和包环境组合。引擎
    排版文档并读取 Typst 的帧：字形位置、绘制属性、源
    字节范围、三次形状和带标签的组。Python 保留可绘制行
@@ -201,14 +201,14 @@ mobject 赋予它已有的点不会改变任何东西（将一个网格赋予其
 原生编译器和字体环境，参见[引擎](engine.md#_9)。
 
 两个消费者有各自的布局职责。
-[`mobjects/code.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobjects/code.py)
+[`mobjects/code.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobjects/code.py)
 构建带行和列网格、行号和框架的语法着色列表。
-[`mobjects/numbers.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobjects/numbers.py)
+[`mobjects/numbers.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobjects/numbers.py)
 格式化并布局可在动画期间变化的数字行。两者都使用
 排版的 mobject 而非另一个文本渲染器。
 
 SVG 采用单独的输入路径。
-[`mobjects/svg.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobjects/svg.py)
+[`mobjects/svg.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobjects/svg.py)
 读取外部矢量绘图，转换其形状和路径，应用其绘制属性和
 变换，并保留其 id 组。它到达同一个几何和绘制属性模型
 而不经过排版器。
@@ -236,12 +236,12 @@ SVG 采用单独的输入路径。
 - 在一个叶子上同时开始的补间合成：其运动链接它们所有的运动，且
   每个绘制属性字段是最后更改者的。
 
-参见 [`animation/`](https://github.com/1Cyrvox/ShuJing/tree/main/src/manimgx/animation)：
-[`timeline.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/animation/timeline.py)
+参见 [`animation/`](https://github.com/1Cyrvox/Wiznex/tree/main/src/manimgx/animation)：
+[`timeline.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/animation/timeline.py)
 拥有生命周期和嵌套时间窗口；
-[`transform.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/animation/transform.py)
+[`transform.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/animation/transform.py)
 拥有关键帧求值、记录的方法调用和并发叶子合成；
-[`motion.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/animation/motion.py)
+[`motion.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/animation/motion.py)
 在它们之上构建动画预设。时序合成和几何合成
 有各自的所有者，因为它们回答不同的问题：一个部分何时作用，以及
 其贡献如何与作用在同一对象上的其他变换组合。
@@ -282,8 +282,8 @@ SVG 采用单独的输入路径。
 
 一个什么都不会改变的 wait 是一帧，保持。
 
-参见 [`animation/clock.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/animation/clock.py) 以及
-[`scene.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/scene.py) 中的
+参见 [`animation/clock.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/animation/clock.py) 以及
+[`scene.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/scene.py) 中的
 `play`、`_run` 和 `_instant`。用户指南的
 [基础](../user-guide/the-basics.md#_4)以场景作者所见的方式描述了时钟。
 
@@ -308,8 +308,8 @@ SVG 采用单独的输入路径。
 在其结束时被保留为一个 [`Play`][manimgx.rendering.film.Play]：其精确的开始和结束，以及
 播放它的场景代码行。
 
-参见 [`rendering/film.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/rendering/film.py) 和
-[`rendering/feed.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/rendering/feed.py)。
+参见 [`rendering/film.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/rendering/film.py) 和
+[`rendering/feed.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/rendering/feed.py)。
 
 声音遵循同一场景时间线。`audio/sound.py` 拥有 [`Sound`][manimgx.Sound]
 和 [`Speech`][manimgx.Speech]、它们的编辑和词时。场景调度片段
@@ -330,7 +330,7 @@ MP4。它还进行排版。
 ## 命令行
 
 `manimgx` 命令行是
-[`cli/`](https://github.com/1Cyrvox/ShuJing/tree/main/src/manimgx/cli) 中的一个 [Typer](https://typer.tiangolo.com) 应用。
+[`cli/`](https://github.com/1Cyrvox/Wiznex/tree/main/src/manimgx/cli) 中的一个 [Typer](https://typer.tiangolo.com) 应用。
 每个命令加载场景文件、选取场景、设置配置，并
 用影片的钩子渲染它：一个*take*。`render` 和 `inspect` 写入带标注的故事板并
 报告 2D 布局问题（帧裁掉的内容、重叠的文本、穿过
@@ -384,11 +384,11 @@ ManimGX 在运行时需要这些包：
 
 ## 了解更多
 
-- [`scene.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/scene.py)：
+- [`scene.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/scene.py)：
   一个场景的生命周期、`play`、`wait` 和时钟的规则。
-- [`mobject.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/mobject.py)：
+- [`mobject.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/mobject.py)：
   每个 mobject 拥有什么。
-- [`rendering/feed.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/rendering/feed.py)：
+- [`rendering/feed.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/rendering/feed.py)：
   记录，逐字段。
 - 实现模块在模块 docstring 中为
   更改它们的开发者介绍其设计。API 参考不显示它。

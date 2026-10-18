@@ -1,6 +1,6 @@
 # 常见问题
 
-本页回答关于数境 ShuJing 的常见问题。如果你的问题未在此列出，请[提交 Issue](https://github.com/1Cyrvox/ShuJing/issues/new/choose)。
+本页回答关于数境 ShuJing 的常见问题。如果你的问题未在此列出，请[提交 Issue](https://github.com/1Cyrvox/Wiznex/issues/new/choose)。
 
 ## 安装
 
@@ -14,7 +14,7 @@ pip install manimgx
 
 ### 安装时提示找不到引擎？
 
-数境 ShuJing 需要预编译的 Rust 引擎。如果你使用的是 Windows，请确保下载了对应平台的预编译包。如遇问题，请[提交 Issue](https://github.com/1Cyrvox/ShuJing/issues/new/choose)。
+数境 ShuJing 需要预编译的 Rust 引擎。如果你使用的是 Windows，请确保下载了对应平台的预编译包。如遇问题，请[提交 Issue](https://github.com/1Cyrvox/Wiznex/issues/new/choose)。
 
 ### 支持哪些操作系统？
 
@@ -114,7 +114,7 @@ class FaqFormula(Scene):
 
 ### 如何报告 Bug？
 
-请在 [GitHub Issues](https://github.com/1Cyrvox/ShuJing/issues/new/choose) 提交 Bug 报告。
+请在 [GitHub Issues](https://github.com/1Cyrvox/Wiznex/issues/new/choose) 提交 Bug 报告。
 
 ### 如何贡献代码？
 
@@ -122,5 +122,5 @@ class FaqFormula(Scene):
 
 ### 有社区群吗？
 
-- GitHub Discussions：[1Cyrvox/ShuJing](https://github.com/1Cyrvox/ShuJing/discussions)
-- Issue 反馈：[提交 Issue](https://github.com/1Cyrvox/ShuJing/issues/new/choose)
+- GitHub Discussions：[1Cyrvox/Wiznex](https://github.com/1Cyrvox/Wiznex/discussions)
+- Issue 反馈：[提交 Issue](https://github.com/1Cyrvox/Wiznex/issues/new/choose)

@@ -1,7 +1,7 @@
 # 引擎
 
-引擎是 [`rust/engine/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/engine) 中的 Rust crate，Rust
-工作空间 [`rust/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust) 的 crate 之一。
+引擎是 [`rust/engine/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/engine) 中的 Rust crate，Rust
+工作空间 [`rust/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust) 的 crate 之一。
 maturin 将它编译进包中作为 `manimgx._engine`，一个 Python 扩展模块。它
 做三件事：在 GPU 上绘制帧、将它们编码为 MP4，以及排版文本。
 Python 决定每一帧显示什么；引擎制作像素。它还将一个影片记录为
@@ -38,41 +38,41 @@ API（Metal、Vulkan）来完成。Typst 是一个 Rust 库，x264
 
 | 文件 | 容纳内容 |
 | --- | --- |
-| [`src/lib.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/lib.rs) | 该 crate：其构建（特性）和内容键 |
-| [`src/render.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/render.rs) | GPU 的播放器（`Player`，也是 Python 的）：形状的存储、一帧的通道、GPU |
-| [`src/lavapipe.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/lavapipe.rs) | Mesa 的 lavapipe，由 Linux wheel 捆绑，在没有 GPU 驱动的地方加载 |
-| [`src/python.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/python.rs) | Python 模块：`Player` 和 `Recorder` 类以及 Python 调用的函数 |
-| [`src/take.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/take.rs) | 一个 take 的消息，写入和读取 |
-| [`src/pack.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/pack.rs) | 一个 take 的数组，每个针对它替换的那个编码 |
-| [`src/project.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/project.rs) | 投影器：take 如其到来，按需绘制其中任意一帧，在有界内存中 |
-| [`src/player.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/player.rs) | ManimGX 的播放器，在任意屏幕上：时钟上的投影器、其界面和声音、其查看器的输入 |
-| [`src/chrome.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/chrome.rs) | 播放器的界面（其控件、其文本），由引擎自身绘制 |
-| [`src/text.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/text.rs) | 界面的文本：按 Typst 整形的方式排列的行，使用 ManimGX 的字体 |
-| [`src/speaker.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/speaker.rs) | 播放器的声音，跟随其时钟：窗口的（cpal）、页面的（Web Audio） |
-| [`src/window.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/window.rs) | 本机屏幕上窗口中的播放器（winit） |
-| [`src/web.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/web.rs) | 页面画布上的播放器（WebAssembly） |
-| [`src/export.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/export.rs) | 影片的视频：转换并交给编码器的帧 |
-| [`src/vector.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/vector.rs), [`src/vector.wgsl`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/vector.wgsl) | 路径覆盖和视图的合成 |
-| [`src/blend.wgsl`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/blend.wgsl) | 光栅管线：点云和网格 |
-| [`src/paint.wgsl`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/paint.wgsl) | 绘制属性，两条管线如此求值它 |
-| [`src/nv12.wgsl`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/nv12.wgsl) | 一帧变化的宏块，为编码器转换 |
-| [`src/encode.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/encode.rs) | 通过 x264 的 H.264 |
-| [`src/mp4.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/mp4.rs) | MP4 文件 |
-| [`src/audio.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/audio.rs) | 从其文件读取的声音（FFmpeg），并重采样 |
-| [`src/aac.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/aac.rs) | 影片的声音，作为 AAC |
-| [`src/typeset.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/src/typeset.rs) | 作为库的 Typst，以及 mitex |
-| [`build.rs`](https://github.com/1Cyrvox/ShuJing/blob/main/rust/engine/build.rs) | 页面的播放器，在 Pyodide 的模块旁构建并携带于其中 |
-| [`../mitex-spec-gen/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/mitex-spec-gen) | mitex 的 Typst 包（获取的），以及从中制作的 LaTeX 命令规格 |
-| [`../x264/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/x264) | x264，从其源码构建（获取的），在一个 C 垫片和少数安全调用之后 |
-| [`../nasm/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/nasm) | NASM，从其源码构建（获取的），用于 x264 的 x86-64 汇编 |
-| [`../ffmpeg/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/ffmpeg) | FFmpeg 的音频解码器和 libopus，从其源码构建（获取的），在一个 C 垫片和一个安全调用之后 |
-| [`../fetch/`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/fetch) | 其他 crate 构建所用的源码，由其构建脚本获取并以其文件的哈希固定 |
+| [`src/lib.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/lib.rs) | 该 crate：其构建（特性）和内容键 |
+| [`src/render.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/render.rs) | GPU 的播放器（`Player`，也是 Python 的）：形状的存储、一帧的通道、GPU |
+| [`src/lavapipe.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/lavapipe.rs) | Mesa 的 lavapipe，由 Linux wheel 捆绑，在没有 GPU 驱动的地方加载 |
+| [`src/python.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/python.rs) | Python 模块：`Player` 和 `Recorder` 类以及 Python 调用的函数 |
+| [`src/take.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/take.rs) | 一个 take 的消息，写入和读取 |
+| [`src/pack.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/pack.rs) | 一个 take 的数组，每个针对它替换的那个编码 |
+| [`src/project.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/project.rs) | 投影器：take 如其到来，按需绘制其中任意一帧，在有界内存中 |
+| [`src/player.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/player.rs) | ManimGX 的播放器，在任意屏幕上：时钟上的投影器、其界面和声音、其查看器的输入 |
+| [`src/chrome.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/chrome.rs) | 播放器的界面（其控件、其文本），由引擎自身绘制 |
+| [`src/text.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/text.rs) | 界面的文本：按 Typst 整形的方式排列的行，使用 ManimGX 的字体 |
+| [`src/speaker.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/speaker.rs) | 播放器的声音，跟随其时钟：窗口的（cpal）、页面的（Web Audio） |
+| [`src/window.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/window.rs) | 本机屏幕上窗口中的播放器（winit） |
+| [`src/web.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/web.rs) | 页面画布上的播放器（WebAssembly） |
+| [`src/export.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/export.rs) | 影片的视频：转换并交给编码器的帧 |
+| [`src/vector.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/vector.rs), [`src/vector.wgsl`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/vector.wgsl) | 路径覆盖和视图的合成 |
+| [`src/blend.wgsl`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/blend.wgsl) | 光栅管线：点云和网格 |
+| [`src/paint.wgsl`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/paint.wgsl) | 绘制属性，两条管线如此求值它 |
+| [`src/nv12.wgsl`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/nv12.wgsl) | 一帧变化的宏块，为编码器转换 |
+| [`src/encode.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/encode.rs) | 通过 x264 的 H.264 |
+| [`src/mp4.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/mp4.rs) | MP4 文件 |
+| [`src/audio.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/audio.rs) | 从其文件读取的声音（FFmpeg），并重采样 |
+| [`src/aac.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/aac.rs) | 影片的声音，作为 AAC |
+| [`src/typeset.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/src/typeset.rs) | 作为库的 Typst，以及 mitex |
+| [`build.rs`](https://github.com/1Cyrvox/Wiznex/blob/main/rust/engine/build.rs) | 页面的播放器，在 Pyodide 的模块旁构建并携带于其中 |
+| [`../mitex-spec-gen/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/mitex-spec-gen) | mitex 的 Typst 包（获取的），以及从中制作的 LaTeX 命令规格 |
+| [`../x264/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/x264) | x264，从其源码构建（获取的），在一个 C 垫片和少数安全调用之后 |
+| [`../nasm/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/nasm) | NASM，从其源码构建（获取的），用于 x264 的 x86-64 汇编 |
+| [`../ffmpeg/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/ffmpeg) | FFmpeg 的音频解码器和 libopus，从其源码构建（获取的），在一个 C 垫片和一个安全调用之后 |
+| [`../fetch/`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/fetch) | 其他 crate 构建所用的源码，由其构建脚本获取并以其文件的哈希固定 |
 
 每个文件以一段陈述其设计的注释开始。
 
 ## 与 Python 的边界
 
-[`src/manimgx/_engine.pyi`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/_engine.pyi)
+[`src/manimgx/_engine.pyi`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/_engine.pyi)
 是引擎的接口，如 Python 所见，带类型：`Player` 和 `Recorder` 类、
 排版函数、`digest`（命名上传内容的键）、`note`
 和 `TypstError`。它是
@@ -83,7 +83,7 @@ API（Metal、Vulkan）来完成。Typst 是一个 Rust 库，x264
   ABI 构建（PyO3 的 `abi3-py313`）。
 - **字节，而非对象。** 传递的是打包的数组：控制点为 float64、
   336 字节的记录、float32 的视图。Python 用 numpy 打包它们
-  （[`rendering/feed.py`](https://github.com/1Cyrvox/ShuJing/blob/main/src/manimgx/rendering/feed.py)）；
+  （[`rendering/feed.py`](https://github.com/1Cyrvox/Wiznex/blob/main/src/manimgx/rendering/feed.py)）；
   引擎按原样读取它们。一个形状按其对象定义的方式传递，且
   引擎导出绘制所需的内容：它扁平化路径的曲线，并将网格的面求和
   为其顶点的法线。
@@ -113,7 +113,7 @@ float32 渲染目标的适配器，因为 2D 视图在一个目标中累加其�
 在 Linux 上，当没有适配器可用时（没有 GPU 驱动：服务器、容器），引擎用
 Mesa 的 lavapipe（CPU 上的 Vulkan）绘制，Linux wheel 将其捆绑在旁
 （`manimgx/lavapipe/libvulkan_lvp.so`，从 Mesa 的源码构建，LLVM 由
-[`scripts/release/build_lavapipe.sh`](https://github.com/1Cyrvox/ShuJing/blob/main/scripts/release/build_lavapipe.sh) 链入）。
+[`scripts/release/build_lavapipe.sh`](https://github.com/1Cyrvox/Wiznex/blob/main/scripts/release/build_lavapipe.sh) 链入）。
 `src/lavapipe.rs` 如同 Vulkan 的加载器加载驱动那样加载它，并给 wgpu 一个它的
 实例：系统的加载器和环境都不参与，有 GPU 的机器
 从不加载它。从源码构建的引擎没有自己的 lavapipe；在那里，系统的 Mesa
@@ -217,9 +217,9 @@ x86-64 上，用 NASM 的 SSE 到 AVX-512，x264 的 x86 代码即为此编写�
 （`glyph_outlines`），因此它仅传递一次。
 
 字体来自 Python 传递的文件夹，其中包括 ManimGX 自己的：字体包
-（[`fonts/manimgx-fonts/`](https://github.com/1Cyrvox/ShuJing/tree/main/fonts/manimgx-fonts)
+（[`fonts/manimgx-fonts/`](https://github.com/1Cyrvox/Wiznex/tree/main/fonts/manimgx-fonts)
 和
-[`fonts/manimgx-fonts-cjk/`](https://github.com/1Cyrvox/ShuJing/tree/main/fonts/manimgx-fonts-cjk)，
+[`fonts/manimgx-fonts-cjk/`](https://github.com/1Cyrvox/Wiznex/tree/main/fonts/manimgx-fonts-cjk)，
 独立发布并要求精确版本），然后来自 Typst 的内嵌字体。系统
 的字体仅在文本命名的字体系列中被读取：其扫描在磁盘上缓存，且
 它们是内存映射的，而非整体读取（一个 CJK 字体可达 60 MB）。
@@ -228,7 +228,7 @@ LaTeX 通过 mitex（`mitex_math`、`mitex_text`）到达 Typst。mitex 通过�
 *命令规格*转换：它知道哪些 LaTeX 命令，以及每个命令接受多少参数。mitex
 自身的规格 crate 从一个 git 子模块读取规格，或用 PATH 上的一个 `typst` 制作它；
 `rust/Cargo.toml` 用
-[`mitex-spec-gen`](https://github.com/1Cyrvox/ShuJing/tree/main/rust/mitex-spec-gen)
+[`mitex-spec-gen`](https://github.com/1Cyrvox/Wiznex/tree/main/rust/mitex-spec-gen)
 替换该 crate，
 后者获取 mitex 的 Typst 包（带其自身的 `lib.typ`，仅导入转换的 LaTeX 调用的作用域）并持有从中制作的规格（`spec.rkyv`）。引擎将该
 包服务于 Typst 自身，作为 `@preview/mitex:0.2.7`，因此
@@ -244,7 +244,7 @@ ManimGX 的播放器播放 take：本机屏幕上其自身窗口中的 [`manimgx
 [`Window`][manimgx.Window]，页面画布上的 npm 包。它是一个播放器，`player.rs`，两个屏幕上相同的代码：一个屏幕给
 它一个表面，传递其查看器的输入，在到期时绘制它并执行它的要求。窗口的屏幕是 winit 的（`window.rs`）；页面的是编译为 WebAssembly
 的引擎（`web.rs`），页面的元素传递其事件
-（[`browser/src/player.ts`](https://github.com/1Cyrvox/ShuJing/blob/main/browser/src/player.ts)）。
+（[`browser/src/player.ts`](https://github.com/1Cyrvox/Wiznex/blob/main/browser/src/player.ts)）。
 
 - **任意帧，一次。** 播放器将 take 按发送时的样子保留（`project.rs`），并绘制其时钟
   所在的帧，按其显示的大小，在屏幕自身的像素中。一个更新的 take，即再次
@@ -309,7 +309,7 @@ ManimGX 的播放器播放 take：本机屏幕上其自身窗口中的 [`manimgx
   播放器保留最近绘制的帧所绘制的，直到一个预算。其界面的字体来自
   Pyodide，即窗口界面设置的字体：`_engine.face_fonts` 给出 ManimGX 的字体
   文件和 Typst 的等宽字体。
-  [`browser/`](https://github.com/1Cyrvox/ShuJing/tree/main/browser) 持有
+  [`browser/`](https://github.com/1Cyrvox/Wiznex/tree/main/browser) 持有
   页面侧：元素和导演的 worker（Pyodide）。
 
 一个 take 是 Python 和播放器之间的协议：`manimgx preview` 通过一个

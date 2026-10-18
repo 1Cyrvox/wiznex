@@ -111,5 +111,5 @@ is published apart from it has a folder of its own, with its own tests.
   (`gallery.py`). `showcase/`: the README's pictures (committed), the logo (`logo.py`: the
   banner, the header's, the favicon) and the wall of films (`wall.py`). `engine/`: the DFG
   table the engine is compiled with (`dfg_table.py`).
-- `skills/manimgx/`: the agent skill, which `npx skills add 1Cyrvox/ShuJing` installs;
+- `skills/manimgx/`: the agent skill, which `npx skills add 1Cyrvox/Wiznex` installs;
   `tests/docs/test_skill.py` checks its front matter.

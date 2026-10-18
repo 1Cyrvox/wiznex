@@ -52,7 +52,7 @@ manimgx = "manimgx.cli:main"
 
 [project.urls]
 Documentation = "https://www.wlazn.cn/"
-Repository = "https://github.com/1Cyrvox/ShuJing"
+Repository = "https://github.com/1Cyrvox/Wiznex"
 
 [build-system]
 requires = ["maturin>=1.15.0,<2.0"]

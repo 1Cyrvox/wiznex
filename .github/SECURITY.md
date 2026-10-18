@@ -3,13 +3,13 @@
 ## Reporting a vulnerability
 
 Please don't report a vulnerability in a public issue. Report it privately, through
-[GitHub's private vulnerability reporting](https://github.com/1Cyrvox/ShuJing/security/advisories/new)
+[GitHub's private vulnerability reporting](https://github.com/1Cyrvox/Wiznex/security/advisories/new)
 or by email to [dev@wlazn.cn](mailto:dev@wlazn.cn).
 
 Tell us what you found, how to reproduce it (a scene or an input file helps most), and the
 ManimGX version. We acknowledge every report within 7 days, and keep you updated while we work
 on a fix. When it is fixed, we publish a
-[security advisory](https://github.com/1Cyrvox/ShuJing/security/advisories), with a CVE
+[security advisory](https://github.com/1Cyrvox/Wiznex/security/advisories), with a CVE
 where one applies, and credit you unless you'd rather not be named.
 
 ## Supported versions

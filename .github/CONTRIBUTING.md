@@ -6,9 +6,9 @@
 
 ## 反馈与 Issue
 
-一切始于 [Issue](https://github.com/1Cyrvox/ShuJing/issues/new/choose)：Bug 报告、功能请求、文档问题和疑问均可。请先搜索已有 Issue，再选择合适的模板提交。
+一切始于 [Issue](https://github.com/1Cyrvox/Wiznex/issues/new/choose)：Bug 报告、功能请求、文档问题和疑问均可。请先搜索已有 Issue，再选择合适的模板提交。
 
-如遇安全问题，请勿公开提交 Issue，而是按照[安全策略](https://github.com/1Cyrvox/ShuJing/blob/main/.github/SECURITY.md)私下报告。
+如遇安全问题，请勿公开提交 Issue，而是按照[安全策略](https://github.com/1Cyrvox/Wiznex/blob/main/.github/SECURITY.md)私下报告。
 
 ### Issue 分类
 
@@ -49,11 +49,11 @@
 
 ## 许可证
 
-提交贡献即表示你同意你的贡献在数境的 [MIT 许可证](https://github.com/1Cyrvox/ShuJing/blob/main/LICENSE)下授权。
+提交贡献即表示你同意你的贡献在数境的 [MIT 许可证](https://github.com/1Cyrvox/Wiznex/blob/main/LICENSE)下授权。
 
 ## 行为准则
 
-所有参与数境开发的人员须遵守[行为准则](https://github.com/1Cyrvox/ShuJing/blob/main/.github/CODE_OF_CONDUCT.md)。
+所有参与数境开发的人员须遵守[行为准则](https://github.com/1Cyrvox/Wiznex/blob/main/.github/CODE_OF_CONDUCT.md)。
 
 ## 上游同步
 

@@ -30,9 +30,9 @@
 ## ManimGX 的工作流
 
 七个常规的构建、发布和协作工作流位于
-[`.github/workflows/`](https://github.com/1Cyrvox/ShuJing/tree/main/.github/workflows)。
+[`.github/workflows/`](https://github.com/1Cyrvox/Wiznex/tree/main/.github/workflows)。
 
-### 1. [`test.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/test.yaml)：检查与测试
+### 1. [`test.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/test.yaml)：检查与测试
 
 **何时运行：**
 
@@ -59,12 +59,12 @@
    报告，其表格会放入运行的摘要中。报告会被保留，
    同时保留覆盖率徽章的数据（`badge.json`）。
 6. **发布覆盖率**，针对 `main` 的推送以及来自仓库分支的 pull request：发布到 Worker `manimgx-coverage`
-   （[`.github/deploy/coverage.jsonc`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/deploy/coverage.jsonc)）。
+   （[`.github/deploy/coverage.jsonc`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/deploy/coverage.jsonc)）。
    `main` 的报告通过 <https://coverage.www.wlazn.cn> 提供。每个提交的报告
    也是其自身的预览部署（在预览 `main` 或 `pr-<number>` 中），提交的
    "coverage" 状态会链接到它。
 
-### 2. [`benchmark.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/benchmark.yaml)：计时基准测试
+### 2. [`benchmark.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/benchmark.yaml)：计时基准测试
 
 **何时运行：**
 
@@ -83,7 +83,7 @@
 wall-time 列中：着色器和 GPU 调度的变更需要在
 安静的机器上审查那些时间。Linux 和 Windows 保留其功能性渲染测试。
 
-### 3. [`deploy-docs.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/deploy-docs.yaml)：文档站点
+### 3. [`deploy-docs.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/deploy-docs.yaml)：文档站点
 
 **何时运行：**
 
@@ -111,7 +111,7 @@ wall-time 列中：着色器和 GPU 调度的变更需要在
 
 关于站点如何提供服务，见 [文档](documentation.md#_11)。
 
-### 4. [`release.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/release.yaml)：发布
+### 4. [`release.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/release.yaml)：发布
 
 **何时运行：**
 
@@ -141,7 +141,7 @@ wall-time 列中：着色器和 GPU 调度的变更需要在
    冒烟测试。BuildKit 将其来源证明和 SBOM 保留在 OCI 归档中。
 4. **起草 GitHub release**，在标签上：为每个文件的来源证明签名（即对
    工作流、提交和构建它的运行的证明，可由
-   `gh attestation verify FILE --repo 1Cyrvox/ShuJing` 验证），并起草 release
+   `gh attestation verify FILE --repo 1Cyrvox/Wiznex` 验证），并起草 release
    `manimgx X.Y.Z`，包含这些文件（也包括完整源码，PyPI 不会收到），其说明为
    变更日志中该版本的章节（`just release-notes`），然后说明完整
    源码的位置，这是 x264 和 FFmpeg 的许可证所要求的。草稿随后变为公开，
@@ -176,7 +176,7 @@ wall-time 列中：着色器和 GPU 调度的变更需要在
 7. **发布 Docker 镜像：**复制经过测试的 OCI 归档而不改变其摘要，
    包括来源证明和 SBOM，并组装 `linux/amd64` 和 `linux/arm64`
    平台索引。其来源证明已签名，并发布到
-   `ghcr.io/1Cyrvox/ShuJing`，标记为 `X.Y.Z` 和 `X.Y`（预发布版本
+   `ghcr.io/1Cyrvox/Wiznex`，标记为 `X.Y.Z` 和 `X.Y`（预发布版本
    仅 `X.Y.Z`），标签为 `MIT AND GPL-3.0-or-later`：ManimGX 的代码，以及引擎，由于
    x264 使整体成为 GPL-3.0-or-later。它不需要新的包解析或镜像构建。
    首次上传后，在其 GitHub 包设置中将容器包的
@@ -192,7 +192,7 @@ wall-time 列中：着色器和 GPU 调度的变更需要在
    不更改该设置。记录的制品摘要和来源
    证明验证所获取的字节；它们不启用 GitHub 的不可变性策略。
 
-### 5. [`create-wheels.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/create-wheels.yaml)：wheel
+### 5. [`create-wheels.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/create-wheels.yaml)：wheel
 
 **何时运行：**当 Release 工作流调用它时（或 Create executables 手动运行时），以及手动运行以尝试某个分支的 wheel 时。
 
@@ -205,14 +205,14 @@ lavapipe（`scripts/release/build_lavapipe.sh`）。cibuildwheel 构建该
 [项目管理](project-management.md#_4)）。每个 wheel 保留为
 `wheel-<platform>`。
 
-### 6. [`create-executables.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/create-executables.yaml)：可执行文件
+### 6. [`create-executables.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/create-executables.yaml)：可执行文件
 
 **何时运行：**当 Release 工作流调用它时（带有其 wheel），以及手动运行时（此时它会
 先构建 wheel）。
 
 **做什么：**每个平台一个作业，获取该平台的 wheel 并运行
 `just create-executable`
-（[`scripts/release/create_executable.py`](https://github.com/1Cyrvox/ShuJing/blob/main/scripts/release/create_executable.py)），
+（[`scripts/release/create_executable.py`](https://github.com/1Cyrvox/Wiznex/blob/main/scripts/release/create_executable.py)），
 它在保留可执行文件之前先用它渲染一个场景。Linux 在
 wheel 的 manylinux SDK 内构建启动器，因此两者都需要 glibc 2.28 或更新版本。一个全新的 glibc 2.28
 容器随后在没有 Python、GPU 驱动程序、网络访问或
@@ -236,7 +236,7 @@ Windows 的解释器还携带 Microsoft 专有的 `vcruntime140.dll` 和
 [Microsoft 分发条款](https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files) 管辖的二进制
 可再分发组件，而非源码归档提供的开源组件。
 
-### 7. [`ai.yaml`](https://github.com/1Cyrvox/ShuJing/blob/main/.github/workflows/ai.yaml)：issue 和 pull request 上的 Claude
+### 7. [`ai.yaml`](https://github.com/1Cyrvox/Wiznex/blob/main/.github/workflows/ai.yaml)：issue 和 pull request 上的 Claude
 
 Claude 通过 [claude-code-action](https://github.com/anthropics/claude-code-action) 运行，
 基于 Amazon Bedrock。GitHub 的 OIDC 令牌被交换为一个短期的 AWS 会话（对应
@@ -264,7 +264,7 @@ pull request 被打开或标记为准备好评审时。
   检查作者是否可以写入仓库，否则停止。Claude Opus
   在 `just sync` 创建的环境中工作，其命令在 Claude Code 的
   沙箱中运行：它们只能访问 GitHub、PyPI、crates.io 和 npm，永远看不到 AWS 会话。它
-  被告知遵循 [`AGENTS.md`](https://github.com/1Cyrvox/ShuJing/blob/main/AGENTS.md)，
+  被告知遵循 [`AGENTS.md`](https://github.com/1Cyrvox/Wiznex/blob/main/AGENTS.md)，
   在推送之前运行 `just check` 及其变更涉及的测试，并以
   草稿 pull request 的形式打开变更。对于来自 fork 的 pull request，它只读取。
 
@@ -327,14 +327,14 @@ pull request 被打开或标记为准备好评审时。
 
 ## `.github/` 中的其他文件
 
-[贡献指南](https://github.com/1Cyrvox/ShuJing/blob/main/.github/CONTRIBUTING.md)、
+[贡献指南](https://github.com/1Cyrvox/Wiznex/blob/main/.github/CONTRIBUTING.md)、
 安全策略、行为准则、issue 表单（bug、功能、文档、
 问题；没有空白 issue）和 pull request 模板（摘要、测试计划以及
 AI 的使用）。GitHub 会在适用的地方分别显示它们。
 
 ## 了解更多
 
-- [`.github/workflows/`](https://github.com/1Cyrvox/ShuJing/tree/main/.github/workflows)：
+- [`.github/workflows/`](https://github.com/1Cyrvox/Wiznex/tree/main/.github/workflows)：
   工作流文件。
 - [GitHub Actions 文档](https://docs.github.com/en/actions)。
 - [Dependabot 告警](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-alerts)。

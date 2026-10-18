@@ -33,7 +33,7 @@ ManimGX 逐版本的重要变更。格式遵循
 
 ### 修复
 
-- 保留排队中的视频帧所需资源，直到其透明度重试完成，修复了缓存清理期间的渲染失败问题（[#16](https://github.com/1Cyrvox/ShuJing/issues/16)）。
+- 保留排队中的视频帧所需资源，直到其透明度重试完成，修复了缓存清理期间的渲染失败问题（[#16](https://github.com/1Cyrvox/Wiznex/issues/16)）。
 - 在 PyPI 缩窄 README 表格时保持基准测试对比图片的宽高比。
 - 在 README 和 wheel 的第三方声明中致谢 Filament，3D 光照的代码改编自它。
 

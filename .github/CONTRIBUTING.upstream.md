@@ -8,12 +8,12 @@ is in the [Developer Guide](https://www.wlazn.cn/developer-guide/).
 
 ## Issues
 
-Everything starts as an [issue](https://github.com/1Cyrvox/ShuJing/issues/new/choose):
+Everything starts as an [issue](https://github.com/1Cyrvox/Wiznex/issues/new/choose):
 bugs, feature requests, problems in the docs, and questions. Search the existing issues first,
 then pick the form that fits.
 
 To report a security vulnerability, don't open an issue: follow the
-[security policy](https://github.com/1Cyrvox/ShuJing/blob/main/.github/SECURITY.md).
+[security policy](https://github.com/1Cyrvox/Wiznex/blob/main/.github/SECURITY.md).
 
 ## Before you start
 
@@ -66,9 +66,9 @@ AI tools are welcome, and you are still the author:
 ## License
 
 By contributing, you agree that your contributions are licensed under ManimGX's
-[MIT License](https://github.com/1Cyrvox/ShuJing/blob/main/LICENSE).
+[MIT License](https://github.com/1Cyrvox/Wiznex/blob/main/LICENSE).
 
 ## Code of conduct
 
 Everyone taking part in ManimGX follows its
-[code of conduct](https://github.com/1Cyrvox/ShuJing/blob/main/.github/CODE_OF_CONDUCT.md).
+[code of conduct](https://github.com/1Cyrvox/Wiznex/blob/main/.github/CODE_OF_CONDUCT.md).
